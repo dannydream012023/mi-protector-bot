@@ -20,15 +20,12 @@ logger = logging.getLogger(__name__)
 try:
     BOT_TOKEN = os.environ['BOT_TOKEN']
     GRUPO_PRINCIPAL_ID = os.environ['GRUPO_PRINCIPAL']
-    # ... (el resto de tus secretos)
-    RESPALDO_1_ID = os.environ['RESPALDO_1']
-    RESPALDO_2_ID = os.environ['RESPALDO_2']
-    RESPALDO_3_ID = os.environ['RESPALDO_3']
 except KeyError as e:
     logger.critical(f"FATAL: La variable secreta '{e}' no está configurada. El bot no puede iniciar.")
     exit()
 
-GRUPOS_DE_RESPALDO_IDS = [GRUPO_PRINCIPAL_ID, RESPALDO_1_ID, RESPALDO_2_ID, RESPALDO_3_ID]
+# Creamos una lista con el único grupo de fiscalización.
+GRUPOS_DE_RESPALDO_IDS = [GRUPO_PRINCIPAL_ID]
 
 # --- Comandos y Funciones del Bot ---
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
